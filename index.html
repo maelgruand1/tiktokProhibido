@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Es posible que TikTok sea prohibido a nivel mundial?</title>
+    <link rel="icon" href="logoApp.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to left, orange , yellow);
+            color: #333;
+            overflow-x: hidden;
+        }
+        ul{
+            list-style: none;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #444;
+            padding: 1rem;
+        }
+        nav button {
+            background-color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        nav button:hover, nav button.active {
+            background-color: #222;
+            color: #fff;
+        }
+        .slide {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+            min-height: 80vh;
+        }
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        h1, h2 {
+            color: #444;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        .ppt {
+            display: block;
+            margin: 1rem auto;
+            max-width: 40%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .ppt:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .controls button {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #555;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .controls button:hover {
+            background-color: #222;
+        }
+        table {
+        width: 80%;
+        margin: 2rem auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    table th, table td {
+        padding: 1rem;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 1.2rem;
+    }
+    table th {
+        background-color: #333;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    table tr:hover {
+        background-color: cyan;
+    }
+    table td {
+        color: #333;
+    }
+    table caption {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #444;
+    }
+    iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        
+    }
+    .icon{
+        width: 120px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <img  class="icon" src="logoApp.png" alt="Logo de la app">
+        <h1>¿Es posible que TikTok sea prohibido a nivel mundial?</h1>
+    </header>
+    <nav>
+        <button data-slide="0" class="active">Introducción</button>
+        <button data-slide="1">Escenario hipotético</button>
+        <button data-slide="2">Retos</button>
+        <button data-slide="3">Realismo</button>
+        <button data-slide="4">Conclusión</button>
+        <button data-slide="5">Apertura</button>
+    </nav>
+    <main>
+        <div class="slide active" id="slide-0">
+            <h2>Introducción</h2>
+            <p>TikTok se ha convertido en una de las plataformas digitales más influyentes del mundo...</p>
+            <img class="ppt" src="presentationBase.png" alt="Introducción">
+        </div>
+        <div class="slide" id="slide-1">
+            <h2>Escenario hipotético</h2>
+            <p>¿Qué pasaría si TikTok fuera prohibido en todo el mundo?</p>
+            <ul>
+                <li>Millones de usuarios podrían reaccionar con indignación.</li>
+                <li>Empresas podrían enfrentarse a una crisis financiera. : las empresas que trabajan con TikTok </li>
+                <li>El panorama de las redes sociales cambiaría radicalmente.</li>
+            </ul>
+            <img class="ppt" src="usBan.png" alt="Prohibición en EE.UU.">
+            <img class="ppt" src="mapBan.png" alt="Mapa global de prohibiciones">
+        </div>
+        <div class="slide" id="slide-2">
+            <h2>Retos</h2>
+            <h3>A. Tecnológico</h3>
+            <p>Usuarios podrían evadir la prohibición utilizando VPNs.</p>
+            <img class="ppt" src="retosVPN.png" alt="Retos tecnológicos">
+            <h3>B. Económico</h3>
+            <p>La desaparición de TikTok beneficiaría a competidores como YouTube o Instagram.</p>
+            <img class="ppt" src="otrasEmpresas.png" alt="Competencia económica">
+            <iframe src="listas.html" title="Vista de Tabla y Gráfico"></iframe>
+        </div>
+        <div class="slide" id="slide-3">
+            <h2>Realismo</h2>
+            <p>Un consenso global para prohibir TikTok enfrenta varios obstáculos:</p>
+            <ul>
+                <li>Diferencias en intereses tecnológicos y políticos entre países.</li>
+                <li>Resistencia de millones de usuarios que dependen de la aplicación.</li>
+                <img src="illustationReal.jpeg" class="ppt" alt="illustration realismo">
+            </ul>
+        </div>
+        <div class="slide" id="slide-4">
+            <h2>Conclusión</h2>
+            <p>La prohibición global de TikTok parece improbable debido a los desafíos asociados.</p>
+            <img src="illustrationConclusión.jpeg" alt="Illustration conclusion" class="ppt"> 
+        </div>
+        <div class="slide" id="slide-5">
+            <h2>Apertura</h2>
+            <p>¿Cómo podemos garantizar un uso responsable de las redes sociales sin caer en medidas extremas?</p>
+            <img src="imgRasonable.jpeg" class="ppt" alt="Imagen redes rasonable">
+        </div>
+    </main>
+    <footer>
+        <p> &copy; 2025 Mael Gruand. Sitio de presentación Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        const buttons = document.querySelectorAll("nav button");
+        const slides = document.querySelectorAll(".slide");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const slideIndex = button.getAttribute("data-slide");
+
+                // Activer le bon bouton
+                buttons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                // Afficher la bonne diapositive
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle("active", index == slideIndex);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

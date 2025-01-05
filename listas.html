@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Vista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #444;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .listas {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .listas button {
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .listas button:hover, .listas button.active {
+            background-color: #222;
+        }
+
+        section {
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin: 2rem auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #333;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        canvas {
+            display: none;
+            margin: 2rem auto;
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        canvas.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Comparativa de Empresas</h1>
+    </header>
+
+    <nav class="listas">
+        <button data-view="table" class="active">Vista en formato tabla</button>
+        <button data-view="chart">Vista en gráficos</button>
+    </nav>
+
+    <section>
+        <table id="table-view">
+            <caption>Comparativa de Volumen de Negocios</caption>
+            <tr>
+                <th>Empresa</th>
+                <th>Volumen de negocios (dólares americanos)</th>
+                <th>País de origen</th>
+            </tr>
+            <tr>
+                <td>Meta</td>
+                <td>134 billón de $</td>
+                <td>Estados Unidos</td>
+            </tr>
+            <tr>
+                <td>Google</td>
+                <td>84 billón de $</td>
+                <td>Estados Unidos</td>
+            </tr>
+            <tr>
+                <td>WeChat</td>
+                <td>55,8 billón de $</td>
+                <td>China</td>
+            </tr>
+            <tr>
+                <td>TikTok</td>
+                <td>8,7 billón de $</td>
+                <td>China</td>
+            </tr>
+        </table>
+
+        <canvas id="chart-view" width="800" height="400"></canvas>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const buttons = document.querySelectorAll(".listas button");
+        const tableView = document.getElementById("table-view");
+        const chartView = document.getElementById("chart-view");
+
+        // Datos para el gráfico
+        const chartData = {
+            labels: ["Meta", "Google", "WeChat", "TikTok"],
+            datasets: [{
+                label: "Volumen de negocios (billón $)",
+                data: [134, 84, 55.8, 8.7],
+                backgroundColor: ["#4caf50", "#2196f3", "#ff9800", "#f44336"]
+            }]
+        };
+
+        // Configuración del gráfico
+        const chartConfig = {
+            type: "bar",
+            data: chartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "top",
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Crear el gráfico
+        let chart;
+        function renderChart() {
+            if (!chart) {
+                chart = new Chart(chartView, chartConfig);
+            }
+        }
+
+        // Alternar entre tabla y gráfico
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const view = button.getAttribute("data-view");
+
+                // Activar el botón seleccionado
+                buttons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                // Mostrar tabla o gráfico
+                if (view === "table") {
+                    tableView.style.display = "table";
+                    chartView.classList.remove("active");
+                } else {
+                    tableView.style.display = "none";
+                    chartView.classList.add("active");
+                    renderChart();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
